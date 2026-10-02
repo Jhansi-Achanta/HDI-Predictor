@@ -1,11 +1,16 @@
 from flask import Flask, render_template, request
 import numpy as np
 import pickle
+import os
 
 app = Flask(__name__)
 
 # Load ML model
-model = pickle.load(open("model.pkl", "rb"))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "model.pkl")
+
+with open(MODEL_PATH, "rb") as file:
+    model = pickle.load(file)
 
 
 # Home Page
@@ -73,7 +78,6 @@ def predict():
     )
 
 
-
 # Visualization Page
 
 @app.route("/visualizations")
@@ -91,7 +95,6 @@ def visualizations():
         "visualizations.html",
         graphs=graphs
     )
-
 
 
 if __name__ == "__main__":
