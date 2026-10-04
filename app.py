@@ -84,12 +84,12 @@ def predict():
 def visualizations():
 
     graphs = [
-        "heatmap.png",
-        "scatter.png",
-        "distribution.png",
-        "stripplot.png",
-        "boxplot.png"
-    ]
+    "images/heatmap.png",
+    "images/scatter.png",
+    "images/distribution.png",
+    "images/stripplot.png",
+    "images/boxplot.png"
+]
 
     return render_template(
         "visualizations.html",
